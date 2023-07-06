@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="../src/play2d.js"></script>
+    <title>Test Game</title>
+</head>
+<body>
+    <div id="game"></div>
+    <script>
+        let engine = new Play2D("game");
+        engine.start(30/*FPS*/);
+
+        engine.beginDraw("#202020");
+        engine.fillRect(0, 0, 200, 200, "red");
+        engine.fillText(0, 0, "Hello World!", "Arial", 16, "white"); 
+        engine.endDraw();
+    </script>
+</body>
+</html>

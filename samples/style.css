@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.container {
+
+}
