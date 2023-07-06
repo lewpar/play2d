@@ -72,7 +72,7 @@ class Play2D {
         console.log("End draw");
     }
 
-    getFPS() {
+    getDrawTime() {
         return this.drawTime;
     }
 

@@ -11,13 +11,37 @@
     <div id="game"></div>
     <script>
         let engine = new Play2D("game");
-        engine.start(30/*RedrawTime*/);
+        engine.start(10/*RedrawTime*/);
 
+        let x = 0;
+        let y = 0;
+        let flipX = false;
+        let flipY = false;
         function draw()
         {
+            if(x >= 100)
+            {
+                flipX = true;
+            }
+            if(x <= 0)
+            {
+                flipX = false;
+            }
+            if(y >= 100)
+            {
+                flipY = true;
+            }
+            if(y <= 0)
+            {
+                flipY = false;
+            }
+            
+            x += flipX ? -1 : 1;
+            y += flipY ? -1 : 1;
+
             engine.beginDraw("#202020");
-            engine.fillRect(0, 0, Math.random() * 100, 200, "red");
-            engine.fillText(0, 0, `DrawTime(MS): ${engine.getFPS()}`, "Arial", 16, "white");
+            engine.fillRect(x, y, 100, 100, "red");
+            engine.fillText(0, 0, `DrawTime(MS): ${engine.getDrawTime()}`, "Arial", 16, "white");
             engine.endDraw();
 
             setTimeout(function() {
