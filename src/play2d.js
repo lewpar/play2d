@@ -5,7 +5,10 @@ class Play2D {
     }
 
     start(fps) {
+        console.log("Starting engine..");
+
         this.fps = fps;
+        this.drawTime = 0;
 
         let container = document.getElementById(this.name);
         if(container === null || container === undefined)
@@ -22,6 +25,8 @@ class Play2D {
 
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
+
+        console.log("Engine started.");
     }
 
     fillRect(x, y, width, height, color) {
@@ -45,6 +50,7 @@ class Play2D {
     }
 
     beginDraw(fillColor) {
+        this.startDrawTime = new Date().getTime();
         console.log("Start draw");
         this.context.reset();
         this.fillRectInternal(0, 0, window.innerWidth, window.innerHeight, fillColor);
@@ -56,6 +62,21 @@ class Play2D {
             console.log(`Drawing item ${i}`);
             drawItem();
         }
+
+        this.drawItems = [];
+
+        let currentTime = new Date().getTime();
+        this.drawTime = currentTime - this.startDrawTime;
+        console.log(currentTime);
+        console.log(this.startDrawTime);
         console.log("End draw");
+    }
+
+    getFPS() {
+        return this.drawTime;
+    }
+
+    getRedrawTime() {
+        return this.fps;
     }
 }

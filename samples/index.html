@@ -11,12 +11,21 @@
     <div id="game"></div>
     <script>
         let engine = new Play2D("game");
-        engine.start(30/*FPS*/);
+        engine.start(30/*RedrawTime*/);
 
-        engine.beginDraw("#202020");
-        engine.fillRect(0, 0, 200, 200, "red");
-        engine.fillText(0, 0, "Hello World!", "Arial", 16, "white"); 
-        engine.endDraw();
+        function draw()
+        {
+            engine.beginDraw("#202020");
+            engine.fillRect(0, 0, Math.random() * 100, 200, "red");
+            engine.fillText(0, 0, `DrawTime(MS): ${engine.getFPS()}`, "Arial", 16, "white");
+            engine.endDraw();
+
+            setTimeout(function() {
+                draw();
+            }, engine.getRedrawTime());
+        }
+
+        draw();
     </script>
 </body>
 </html>
